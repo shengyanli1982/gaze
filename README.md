@@ -31,6 +31,28 @@ Here’s why `GAZE` stands out:
 -   **Monitoring**: Monitor the values of important variables and take action when changes occur.
 -   **Notification Systems**: Trigger notifications or alert systems when a variable changes.
 
+# Benchmark
+
+`GAZE` uses `reflect` to compare old and new values. The performance is acceptable for most use cases.
+
+> [!TIP]
+>
+> Because `GAZE` uses `reflect` to compare old and new values, this impacts performance. However, for most use cases, its performance is acceptable.
+
+```bash
+$ go test -benchmem -run=^$ -bench .
+goos: darwin
+goarch: amd64
+pkg: github.com/shengyanli1982/gaze
+cpu: Intel(R) Xeon(R) CPU E5-2643 v2 @ 3.50GHz
+BenchmarkReactiveValue_IntGet-12       	509291721	         2.279 ns/op	       0 B/op	       0 allocs/op
+BenchmarkReactiveValue_IntSet-12       	16097877	        73.40 ns/op	      15 B/op	       1 allocs/op
+BenchmarkReactiveValue_IntSetGet-12    	15974264	        73.96 ns/op	      15 B/op	       1 allocs/op
+BenchmarkStd_IntSet-12                 	1000000000	         0.2874 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStd_IntGet-12                 	1000000000	         0.2833 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStd_IntSetGet-12              	1000000000	         0.2834 ns/op	       0 B/op	       0 allocs/op
+```
+
 # Installation
 
 To install `GAZE`, simply run:

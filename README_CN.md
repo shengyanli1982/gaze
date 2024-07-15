@@ -31,6 +31,28 @@
 -   **监控**：监控重要变量的值，并在发生变化时采取行动。
 -   **通知系统**：在变量变化时触发通知或报警系统。
 
+# 性能测试
+
+`GAZE` 使用 `reflect` 来比较旧值和新值。对于大多数使用场景来说，其性能是可以接受的。
+
+> [!提示]
+>
+> 因为 `GAZE` 使用 `reflect` 来比较旧值和新值，这会影响性能。然而，对于大多数使用场景来说，其性能是可以接受的。
+
+```bash
+$ go test -benchmem -run=^$ -bench .
+goos: darwin
+goarch: amd64
+pkg: github.com/shengyanli1982/gaze
+cpu: Intel(R) Xeon(R) CPU E5-2643 v2 @ 3.50GHz
+BenchmarkReactiveValue_IntGet-12       	509291721	         2.279 ns/op	       0 B/op	       0 allocs/op
+BenchmarkReactiveValue_IntSet-12       	16097877	        73.40 ns/op	      15 B/op	       1 allocs/op
+BenchmarkReactiveValue_IntSetGet-12    	15974264	        73.96 ns/op	      15 B/op	       1 allocs/op
+BenchmarkStd_IntSet-12                 	1000000000	         0.2874 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStd_IntGet-12                 	1000000000	         0.2833 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStd_IntSetGet-12              	1000000000	         0.2834 ns/op	       0 B/op	       0 allocs/op
+```
+
 # 安装
 
 要安装 `GAZE`，只需运行：

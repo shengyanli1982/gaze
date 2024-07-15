@@ -2,24 +2,24 @@ package gaze
 
 import "testing"
 
-func BenchmarkObservableValue_IntGet(b *testing.B) {
-	ov := NewNopObservableValue(42)
+func BenchmarkReactiveValue_IntGet(b *testing.B) {
+	ov := NewNopReactiveValue(42)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		ov.Get()
 	}
 }
 
-func BenchmarkObservableValue_IntSet(b *testing.B) {
-	ov := NewNopObservableValue(42)
+func BenchmarkReactiveValue_IntSet(b *testing.B) {
+	ov := NewNopReactiveValue(42)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		ov.Set(i)
 	}
 }
 
-func BenchmarkObservableValue_IntSetGet(b *testing.B) {
-	ov := NewNopObservableValue(42)
+func BenchmarkReactiveValue_IntSetGet(b *testing.B) {
+	ov := NewNopReactiveValue(42)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		ov.Set(i)

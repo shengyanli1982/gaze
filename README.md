@@ -1,3 +1,13 @@
+English | [中文](./README_CN.md)
+
+<div align="center">
+	<img src="assets/logo.png" alt="logo" width="500px">
+</div>
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/shengyanli1982/gaze)](https://goreportcard.com/report/github.com/shengyanli1982/gaze)
+[![Build Status](https://github.com/shengyanli1982/gaze/actions/workflows/test.yaml/badge.svg)](https://github.com/shengyanli1982/gaze/actions)
+[![Go Reference](https://pkg.go.dev/badge/github.com/shengyanli1982/gaze.svg)](https://pkg.go.dev/github.com/shengyanli1982/gaze)
+
 # GAZE: A Lightweight Go Package for Triggering Callbacks on Variable Changes
 
 When developing applications, it's common to need code that triggers when a variable's value changes. Typically, this requires writing a significant amount of boilerplate code to monitor these changes, which can be tedious and time-consuming. `GAZE` is here to help!
@@ -71,6 +81,8 @@ go get github.com/shengyanli1982/gaze
 -   **Get**: Get the value of the variable.
 
 ### Callbacks
+
+`GAZE` triggers callback functions when a variable's value changes. For asynchronous callbacks, you can use goroutines within the callback function or place the value in a `channel` or `queue` for asynchronous processing.
 
 -   **OnSet**: The callback function is triggered when the variable's value is set and remains unchanged.
 -   **OnGet**: The callback function is triggered when the variable's value is accessed.

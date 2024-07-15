@@ -1,3 +1,13 @@
+[English](./README.md) | 中文
+
+<div align="center">
+	<img src="assets/logo.png" alt="logo" width="500px">
+</div>
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/shengyanli1982/gaze)](https://goreportcard.com/report/github.com/shengyanli1982/gaze)
+[![Build Status](https://github.com/shengyanli1982/gaze/actions/workflows/test.yaml/badge.svg)](https://github.com/shengyanli1982/gaze/actions)
+[![Go Reference](https://pkg.go.dev/badge/github.com/shengyanli1982/gaze.svg)](https://pkg.go.dev/github.com/shengyanli1982/gaze)
+
 # GAZE：一个轻量级用于在变量值变化时触发回调的 Go 软件包
 
 在开发应用程序时，常常需要编写代码来监控变量值的变化并触发相应的操作。通常，这需要写大量的样板代码来监控这些变化，这既繁琐又耗时。而 `GAZE` 就是专门解决这个问题！
@@ -71,6 +81,8 @@ go get github.com/shengyanli1982/gaze
 -   **Get**：获取变量的值。
 
 ### 回调
+
+`GAZE` 会在变量值变化时触发回调函数。对于异步回调，可以在回调函数中使用 goroutines，或者将值放入 `channel` 或 `queue` 中进行异步处理。
 
 -   **OnSet**：当变量的值被设置且未发生变化时，触发回调函数。
 -   **OnGet**：当变量的值被访问时，触发回调函数。

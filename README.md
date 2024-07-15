@@ -1,4 +1,4 @@
-### GAZE: A Lightweight Go Package for Triggering Callbacks on Variable Changes
+# GAZE: A Lightweight Go Package for Triggering Callbacks on Variable Changes
 
 When developing applications, it's common to need code that triggers when a variable's value changes. Typically, this requires writing a significant amount of boilerplate code to monitor these changes, which can be tedious and time-consuming. `GAZE` is here to help!
 
@@ -31,7 +31,7 @@ Here’s why `GAZE` stands out:
 -   **Monitoring**: Monitor the values of important variables and take action when changes occur.
 -   **Notification Systems**: Trigger notifications or alert systems when a variable changes.
 
-### Installation
+# Installation
 
 To install `GAZE`, simply run:
 
@@ -39,24 +39,24 @@ To install `GAZE`, simply run:
 go get github.com/shengyanli1982/gaze
 ```
 
-### Quick Start
+# Quick Start
 
 `GAZE` uses generics to define variable types, making it compatible with most types of variables.
 
-#### Methods
+## Methods
 
 `GAZE` provides two primary methods: `Set` and `Get` to set and get the value of the variable. If the value of the variable changes, the callback function will be triggered.
 
 -   **Set**: Set the value of the variable.
 -   **Get**: Get the value of the variable.
 
-#### Callbacks
+## Callbacks
 
 -   **OnSet**: The callback function is triggered when the variable's value is set and remains unchanged.
 -   **OnGet**: The callback function is triggered when the variable's value is accessed.
 -   **OnChange**: The callback function is triggered when the variable's value changes upon being set.
 
-### Example
+## Example
 
 Using `GAZE` is very simple. Here is an example:
 

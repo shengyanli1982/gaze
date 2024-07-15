@@ -33,8 +33,6 @@ Here’s why `GAZE` stands out:
 
 # Benchmark
 
-`GAZE` uses `reflect` to compare old and new values. The performance is acceptable for most use cases.
-
 > [!TIP]
 >
 > Because `GAZE` uses `reflect` to compare old and new values, this impacts performance. However, for most use cases, its performance is acceptable.

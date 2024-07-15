@@ -112,10 +112,10 @@ got: 11
 got: 3
 ```
 
-### Contributing
+# Contributing
 
 We welcome contributions! If you have any ideas, suggestions, or issues, please open a pull request or an issue on our GitHub repository.
 
-### License
+# License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.

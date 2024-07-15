@@ -43,20 +43,20 @@ go get github.com/shengyanli1982/gaze
 
 `GAZE` uses generics to define variable types, making it compatible with most types of variables.
 
-## Methods
+### Methods
 
 `GAZE` provides two primary methods: `Set` and `Get` to set and get the value of the variable. If the value of the variable changes, the callback function will be triggered.
 
 -   **Set**: Set the value of the variable.
 -   **Get**: Get the value of the variable.
 
-## Callbacks
+### Callbacks
 
 -   **OnSet**: The callback function is triggered when the variable's value is set and remains unchanged.
 -   **OnGet**: The callback function is triggered when the variable's value is accessed.
 -   **OnChange**: The callback function is triggered when the variable's value changes upon being set.
 
-## Example
+### Example
 
 Using `GAZE` is very simple. Here is an example:
 

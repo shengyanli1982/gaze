@@ -53,12 +53,12 @@ goos: darwin
 goarch: amd64
 pkg: github.com/shengyanli1982/gaze
 cpu: Intel(R) Xeon(R) CPU E5-2643 v2 @ 3.50GHz
-BenchmarkReactiveValue_IntGet-12       	509291721	         2.279 ns/op	       0 B/op	       0 allocs/op
-BenchmarkReactiveValue_IntSet-12       	16097877	        73.40 ns/op	      15 B/op	       1 allocs/op
-BenchmarkReactiveValue_IntSetGet-12    	15974264	        73.96 ns/op	      15 B/op	       1 allocs/op
-BenchmarkStd_IntSet-12                 	1000000000	         0.2874 ns/op	       0 B/op	       0 allocs/op
-BenchmarkStd_IntGet-12                 	1000000000	         0.2833 ns/op	       0 B/op	       0 allocs/op
-BenchmarkStd_IntSetGet-12              	1000000000	         0.2834 ns/op	       0 B/op	       0 allocs/op
+BenchmarkReactiveValue_IntGet-12       	1000000000	         0.2745 ns/op	       0 B/op	       0 allocs/op
+BenchmarkReactiveValue_IntSet-12       	16565497	        70.25 ns/op	      15 B/op	       1 allocs/op
+BenchmarkReactiveValue_IntSetGet-12    	16543251	        72.96 ns/op	      15 B/op	       1 allocs/op
+BenchmarkStd_IntSet-12                 	1000000000	         0.2729 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStd_IntGet-12                 	1000000000	         0.2771 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStd_IntSetGet-12              	1000000000	         0.2740 ns/op	       0 B/op	       0 allocs/op
 ```
 
 # 安装
@@ -84,8 +84,6 @@ go get github.com/shengyanli1982/gaze
 
 `GAZE` 会在变量值变化时触发回调函数。对于异步回调，可以在回调函数中使用 goroutines，或者将值放入 `channel` 或 `queue` 中进行异步处理。
 
--   **OnSet**：当变量的值被设置且未发生变化时，触发回调函数。
--   **OnGet**：当变量的值被访问时，触发回调函数。
 -   **OnChange**：当变量的值在设置时发生变化时，触发回调函数。
 
 ### 示例
@@ -102,20 +100,12 @@ import (
 
 type demoCallback[T any] struct{}
 
-func (cb *demoCallback[T]) OnSet(value T) {
-    fmt.Printf(">> OnSet: %v\n", value)
-}
-
-func (cb *demoCallback[T]) OnGet(value T) {
-    fmt.Printf(">> OnGet: %v\n", value)
-}
-
 func (cb *demoCallback[T]) OnChange(oldValue T, newValue T) {
-    fmt.Printf(">> OnChange: %v -> %v\n", oldValue, newValue)
+	fmt.Printf(">> OnChange: %v -> %v\n", oldValue, newValue)
 }
 
 func newTestCallback[T any]() gaze.CallbackFuncs[T] {
-    return &demoCallback[T]{}
+	return &demoCallback[T]{}
 }
 
 func main() {
@@ -137,10 +127,8 @@ func main() {
 
 ```bash
 $ go run demo.go
->> OnGet: 11
 got: 11
 >> OnChange: 11 -> 3
->> OnGet: 3
 got: 3
 ```
 

@@ -8,14 +8,6 @@ import (
 
 type demoCallback[T any] struct{}
 
-func (cb *demoCallback[T]) OnSet(value T) {
-	fmt.Printf(">> OnSet: %v\n", value)
-}
-
-func (cb *demoCallback[T]) OnGet(value T) {
-	fmt.Printf(">> OnGet: %v\n", value)
-}
-
 func (cb *demoCallback[T]) OnChange(oldValue T, newValue T) {
 	fmt.Printf(">> OnChange: %v -> %v\n", oldValue, newValue)
 }

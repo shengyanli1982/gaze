@@ -10,14 +10,6 @@ type testCallback[T any] struct {
 	t *testing.T
 }
 
-func (cb *testCallback[T]) OnSet(value T) {
-	cb.t.Logf(">> OnSet: %v", value)
-}
-
-func (cb *testCallback[T]) OnGet(value T) {
-	cb.t.Logf(">> OnGet: %v", value)
-}
-
 func (cb *testCallback[T]) OnChange(oldValue T, newValue T) {
 	cb.t.Logf(">> OnChange: %v -> %v", oldValue, newValue)
 }
@@ -145,14 +137,23 @@ func TestReactiveValue_WithoutCallback(t *testing.T) {
 		ov := NewNopReactiveValue(&n1)
 
 		// Get the value from the ReactiveValue
-		got := ov.Get()
-		assert.NotNil(t, got, "Get() should return the pointer")
+		got1 := ov.Get()
+		assert.NotNil(t, got1, "Get() should return the pointer")
+
+		// Set a same value with different ptr to the ReactiveValue and get it
+		n2 := 1
+		ov.Set(&n2)
+		got2 := ov.Get()
+		assert.NotNil(t, got2, "Get() should return the pointer")
+
+		// Verify the pointers are different but the values are equal
+		assert.Equal(t, got1, got2, "The pointer values should be equal")
 
 		// Set a new value to the ReactiveValue and get it
-		n2 := 2
-		ov.Set(&n2)
-		got = ov.Get()
-		assert.NotNil(t, got, "Get() should return the pointer")
+		n3 := 2
+		ov.Set(&n3)
+		got1 = ov.Get()
+		assert.NotNil(t, got1, "Get() should return the pointer")
 	})
 }
 
@@ -275,13 +276,22 @@ func TestReactiveValue_Callback(t *testing.T) {
 		ov := NewReactiveValue(&n1, newTestCallback[*int](t))
 
 		// Get the value from the ReactiveValue
-		got := ov.Get()
-		assert.NotNil(t, got, "Get() should return the pointer")
+		got1 := ov.Get()
+		assert.NotNil(t, got1, "Get() should return the pointer")
+
+		// Set a same value with different ptr to the ReactiveValue and get it
+		n2 := 1
+		ov.Set(&n2)
+		got2 := ov.Get()
+		assert.NotNil(t, got2, "Get() should return the pointer")
+
+		// Verify the pointers are different but the values are equal
+		assert.Equal(t, got1, got2, "The pointer values should be equal")
 
 		// Set a new value to the ReactiveValue and get it
-		n2 := 2
-		ov.Set(&n2)
-		got = ov.Get()
-		assert.NotNil(t, got, "Get() should return the pointer")
+		n3 := 2
+		ov.Set(&n3)
+		got1 = ov.Get()
+		assert.NotNil(t, got1, "Get() should return the pointer")
 	})
 }
